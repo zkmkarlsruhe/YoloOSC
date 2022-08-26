@@ -1,0 +1,10 @@
+modify:
+* background: 64
+* line width: 6
+* don't draw frame
+* don't draw text info boxes
+* save frame
+
+run with:
+
+./yoloosc -d 1 -s 320x240

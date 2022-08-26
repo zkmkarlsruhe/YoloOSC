@@ -1,6 +1,8 @@
 YoloOSC
 =======
 
+![screenshot](mdia/screenshot.png)
+
 Yolo live object identification to OSC.
  
 This code base has been developed by [ZKM | Hertz-Lab](https://zkm.de/en/about-the-zkm/organization/hertz-lab) as part of the project [»The Intelligent Museum«](#the-intelligent-museum). 

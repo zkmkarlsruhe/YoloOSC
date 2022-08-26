@@ -5,6 +5,7 @@ config.make
 # model
 bin/data/model
 bin/data/classes.txt
+bin/data/*.png
 
 # Xcode
 *.xcodeproj
