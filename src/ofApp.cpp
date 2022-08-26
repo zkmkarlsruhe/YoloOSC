@@ -37,32 +37,37 @@ void ofApp::setup() {
 	yolo.setNormalize(true);
 	yolo.startThread();
 
-	// input source
-	video.listDevices();
-	video.setDeviceID(1);
-	video.setup(size.width, size.height);
+	// camera input
+	video.setDeviceID(settings.device);
+	video.setDesiredFrameRate(settings.rate);
+	if(!video.setup(settings.size.width, settings.size.height)) {
+		std::exit(EXIT_FAILURE);
+	}
 	frame.allocate(video.getWidth(), video.getHeight(), OF_IMAGE_COLOR);
-	if(video.getWidth() != ofGetWidth() || video.getHeight() != size.width) {
+	if(video.getWidth() != ofGetWidth() || video.getHeight() != ofGetHeight()) {
 		ofSetWindowShape(video.getWidth(), video.getHeight());
 	}
 
 	// osc
-	sender.setup(osc.host, osc.port);
+	if(!sender.setup(settings.host, settings.port)) {
+		std::exit(EXIT_FAILURE);
+	}
+
+	// syphon
+	syphon.setName(SYPHON_NAME);
+	if(settings.syphon) {
+		syphon.start();
+	}
 
 	// resources
 	font.load(OF_TTF_MONO, 10);
 
 	// print settings
-	setVerbose(true);
+	ofLogVerbose(PACKAGE) << "input size: " << video.getWidth() << "x" << video.getHeight();
 	ofLogVerbose(PACKAGE) << "send host: " << sender.getSettings().host;
 	ofLogVerbose(PACKAGE) << "send port: " << sender.getSettings().port;
-	if(Syphon::supported()) {
-		syphon.setName(SYPHON_NAME);
-		ofLogVerbose(PACKAGE) << "syphon name: " << syphon.getName();
-		syphon.start();
-		if(syphon.isPublishing()) {
-			ofLogVerbose(PACKAGE) << "started syphon";
-		}
+	if(Syphon::supported() && syphon.isPublishing()) {
+		ofLogVerbose(PACKAGE) << "started syphon";
 	}
 }
 
@@ -208,44 +213,4 @@ void ofApp::dragEvent(ofDragInfo dragInfo) {
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg) {
 
-}
-
-// UTIL
-
-//--------------------------------------------------------------
-void ofApp::setVerbose(bool verbose) {
-	if(verbose) {
-		ofSetLogLevel(PACKAGE, OF_LOG_VERBOSE);
-		ofLogVerbose(PACKAGE) << "verbose " << (verbose ? "on" : "off");
-	}
-	else {
-		ofLogVerbose(PACKAGE) << "verbose " << (verbose ? "on" : "off");
-		ofSetLogLevel(PACKAGE, OF_LOG_NOTICE);
-	}
-	this->verbose = verbose;
-}
-
-//--------------------------------------------------------------
-bool ofApp::isVerbose() {
-	return verbose;
-}
-
-// SYPHON
-
-//--------------------------------------------------------------
-void ofApp::startSyphon() {
-	bool wasPublishing = syphon.isPublishing();
-	syphon.start();
-	if(!wasPublishing && !options) {
-		ofLogVerbose(PACKAGE) << "started syphon";
-	}
-}
-
-//--------------------------------------------------------------
-void ofApp::stopSyphon() {
-	bool wasPublishing = syphon.isPublishing();
-	syphon.stop();
-	if(wasPublishing && !options) {
-		ofLogVerbose(PACKAGE) << "stopped syphon";
-	}
 }

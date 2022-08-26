@@ -29,6 +29,18 @@
 #include "config.h"
 #include "Syphon.h"
 
+struct ofAppSettings {
+	std::string host = SEND_HOST; ///< send host address or name
+	int port = SEND_PORT; ///< send port
+	int device = 0; ///< desired input device id
+	int rate = 30; ///< desired input framerate
+	struct {
+		int width = 640;
+		int height = 480;
+	} size; ///< desired input size
+	bool syphon = false; ///< start syphon?
+};
+
 class ofApp : public ofBaseApp {
 
 	public:
@@ -52,23 +64,10 @@ class ofApp : public ofBaseApp {
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-	/// \section Utils
-
-		/// enable/disable loaf verbosity
-		void setVerbose(bool verbose);
-
-		/// get loaf verbosity level
-		bool isVerbose();
-
-	/// \section Syphon
-
-		/// start the Syphon server
-		void startSyphon();
-
-		/// stop the Syphon server
-		void stopSyphon();
-
 	/// \section Data
+
+		// config settings
+		ofAppSettings settings;
 
 		// model
 		ofxYolo yolo;
@@ -76,10 +75,6 @@ class ofApp : public ofBaseApp {
 		// input source
 		ofVideoGrabber video;
 		ofImage frame; //< cached video frame
-		const struct {
-			int width = 640;
-			int height = 480;
-		} size; //< desired input size
 		struct {
 			bool horz = true;
 			bool vert = false;
@@ -87,19 +82,10 @@ class ofApp : public ofBaseApp {
 
 		// osc
 		ofxOscSender sender;
-		struct {
-			std::string host = "localhost";
-			int port = 7765;
-		} osc;
+
+		// syphon
+		Syphon syphon;
 
 		// resources
 		ofTrueTypeFont font;
-
-		Syphon syphon; //< Syphon server (macOS)
-
-		void *options = nullptr; //< commandline options, only valid in setup()
-
-	private:
-
-		bool verbose = false; //< current verbosity
 };

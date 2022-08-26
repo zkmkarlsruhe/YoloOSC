@@ -20,25 +20,27 @@
  * This code has been developed at ZKM | Hertz-Lab as part of „The Intelligent
  * Museum“ generously funded by the German Federal Cultural Foundation.
  */
-#include "ofMain.h"
+#pragma once
+
 #include "ofApp.h"
+#include "CLI11.hpp"
 
-#include "Commandline.h"
+/// commandline option parser
+class Commandline {
 
-//========================================================================
-int main(int argc, char **argv) {
-	ofApp *app = new ofApp();
+	public:
 
-	// parse commandline
-	Commandline *parser = new Commandline(app);
-	if(!parser->parse(argc, argv)) {
-		return parser->exit();
-	}
-	delete parser; // done
+		/// constructor with required app instance
+		Commandline(ofApp *app);
 
-	// run app
-	ofSetupOpenGL(app->settings.size.width, app->settings.size.height, OF_WINDOW);
-	ofRunApp(app);
+		/// parse commandline options
+		/// returns true if program should continue or false if it should exit
+		bool parse(int argc, char **argv);
 
-	return EXIT_SUCCESS;
-}
+		/// print parser error and return exit code
+		int exit();
+
+		ofApp *app = nullptr;              //< required app instance
+		CLI::App parser;                   //< parser instance
+		CLI::Error error = CLI::Success(); //< parse error if program should exit
+};

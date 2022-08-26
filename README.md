@@ -125,13 +125,81 @@ Message specification:
   - confidence: detection confidence %, 0-1
 * **/end**: detection frame end
 
+#### Commandline Options
+
+Additional run time settings are available via commandline options as shown via the `--help` flag output:
+
+~~~
+% bin/YoloOSC --help
+yolo live object identification to osc
+Usage: YoloOSC [OPTIONS]
+
+Options:
+  -h,--help                   Print this help message and exit
+  -a,--address TEXT           OSC send host address or name, default localhost
+  -p,--port INT               OSC send port, default 7765
+  -l,--list                   list input devices and exit
+  -d,--dev INT                input device number, default 0
+  -r,--rate INT               desired input framerate, default 30
+  -s,--size TEXT              desired input size, default 640x480
+  --syphon                    start streaming with Syphon (macOS only)
+  -v,--verbose                verbose printing
+  --version                   print version and exit
+~~~
+
+For example, to send OSC to a different address and port, use the `-a` and `-p` options:
+
+% bin/YoloOSC -a 192.168.0.101 -p 7777
+
+#### macOS
+
+For macOS, the application binary can be invoked from within the .app bundle to pass commandline arguments:
+
+~~~
+bin/YoloOSC.app/Contents/MacOS/YoloOSC -h
+~~~
+
+or via the system `open` command:
+
+~~~
+open bin/YoloOSC.app --device 1
+~~~
+
+_Note: `open` will launch the app without a Terminal window, so console output cannot be read._
+
+This approach can also be wrapped up into a shell alias to be added to the account's `~/.bash_profile` or `~/.zshrc` file:
+
+~~~
+alias yoloosc="/Applications/YoloOSC.app/Contents/MacOS/YoloOSC"
+~~~
+
+Reload the shell and application can now be invoked via:
+
+~~~
+% yoloosc -v --device 1
+~~~
+
+Another option is to use a wrapper script, such as the `yoloosc` script included with this repo:
+
+~~~
+% ./yoloosc -v --device 1
+~~~
+
+_Note: The script uses the release build "YoloOSC" .app naming. If you are testing with the debug build, edit the `APP` variable name to "YoloOSCDebug"._
+
 #### Syphon (macOS)
 
 On macOS, the camera input frames can be received by client applications which use [Syphon](http://syphon.v002.info):
 
 >Syphon is an open source Mac OS X technology that allows applications to share frames - full frame rate video or stills - with one another in realtime.
 
-YoloOSC publishes the camera frame using the following naming format:
+Syphon streaming is off by default, use the commandline `--syphon` flag to enable (see Commandline Options macOS section):
+
+~~~
+open bin/YoloOSC.app --device 1
+~~~
+
+When streaming, YoloOSC publishes the camera frame using the following naming format:
 * server name: "frame"
 * app name: "YoloOSC" (Release) or "YoloOSCDebug" (Debug)
 
