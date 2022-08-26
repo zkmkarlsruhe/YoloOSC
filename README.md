@@ -1,7 +1,7 @@
 YoloOSC
 =======
 
-![screenshot](mdia/screenshot.png)
+![screenshot](media/screenshot.png)
 
 Yolo live object identification to OSC.
  
