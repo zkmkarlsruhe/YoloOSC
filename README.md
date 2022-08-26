@@ -213,14 +213,14 @@ ofxSyphonClient client;
 
 // ofApp.cpp
 void ofApp::setup() {
-  ...
-  client.setup();
-  client.set("frame", "YoloOSC");
+    ...
+    client.setup();
+    client.set("frame", "YoloOSC");
 }
 
 void ofApp::draw() {
-ofSetColor(255);
-client.draw(0, 0);
+    ofSetColor(255);
+    client.draw(0, 0);
 }
 ```
 
