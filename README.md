@@ -149,7 +149,9 @@ Options:
 
 For example, to send OSC to a different address and port, use the `-a` and `-p` options:
 
-% bin/YoloOSC -a 192.168.0.101 -p 7777
+~~~
+bin/YoloOSC -a 192.168.0.101 -p 7777
+~~~
 
 #### macOS
 
@@ -176,16 +178,16 @@ alias yoloosc="/Applications/YoloOSC.app/Contents/MacOS/YoloOSC"
 Reload the shell and application can now be invoked via:
 
 ~~~
-% yoloosc -v --device 1
+yoloosc -v --device 1
 ~~~
 
 Another option is to use a wrapper script, such as the `yoloosc` script included with this repo:
 
 ~~~
-% ./yoloosc -v --device 1
+./yoloosc -v --device 1
 ~~~
 
-_Note: The script uses the release build "YoloOSC" .app naming. If you are testing with the debug build, edit the `APP` variable name to "YoloOSCDebug"._
+_Note: The `yoloosc` script uses the release build "YoloOSC" .app naming. If you are testing with the debug build, edit the `APP` variable name to "YoloOSCDebug"._
 
 #### Syphon (macOS)
 
@@ -231,9 +233,10 @@ Develop
 2. Update app version in Xcode project and ofApp.h define
 3. Tag version commit, ala "0.3.0"
 4. Push commit and tags to server:
-
-    git commit push
-    git commit push --tags
+~~~
+git commit push
+git commit push --tags
+~~~
 
 The Intelligent Museum
 ----------------------

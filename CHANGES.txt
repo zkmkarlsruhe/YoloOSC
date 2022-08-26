@@ -1,4 +1,4 @@
-0.2.0: TBA
+0.2.0: 2022 Aug 26
 
 * added commandline option parsing and run script
 * added Syphon output support on macOS (requires ofxSyphon)
