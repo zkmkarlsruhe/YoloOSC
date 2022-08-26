@@ -1,3 +1,7 @@
+0.2.0: TBA
+
+* added Syphon output support on macOS (requires ofxSyphon)
+
 0.1.0: 2022 Aug 25
 
 initial version

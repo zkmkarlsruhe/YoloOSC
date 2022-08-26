@@ -1,2 +1,3 @@
 ofxOsc
+ofxSyphon
 ofxTensorFlow2

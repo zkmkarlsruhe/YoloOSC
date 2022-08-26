@@ -1,7 +1,7 @@
 YoloOSC
 =======
 
-Live object identification streaming over OSC.
+Yolo live object identification to OSC.
  
 This code base has been developed by [ZKM | Hertz-Lab](https://zkm.de/en/about-the-zkm/organization/hertz-lab) as part of the project [»The Intelligent Museum«](#the-intelligent-museum). 
 
@@ -23,6 +23,7 @@ Dependencies
 * openFrameworks addons:
   - ofxOSC (included with oF)
   - [ofxTensorFlow2](https://github.com/zkmkarlsruhe/ofxTensorFlow2)
+  - [ofxSyphon](https://github.com/astellato/ofxSyphon) (macOS)
 * [CLI11 parser](https://github.com/CLIUtils/CLI11) (included in `src`)
 * pre-trained YOLO model and COCO classes txt file (download separately)
 
@@ -123,6 +124,35 @@ Message specification:
   - x, y, w, & h: normalized bounding box 0-1 (top left corner)
   - confidence: detection confidence %, 0-1
 * **/end**: detection frame end
+
+#### Syphon (macOS)
+
+On macOS, the camera input frames can be received by client applications which use [Syphon](http://syphon.v002.info):
+
+>Syphon is an open source Mac OS X technology that allows applications to share frames - full frame rate video or stills - with one another in realtime.
+
+YoloOSC publishes the camera frame using the following naming format:
+* server name: "frame"
+* app name: "YoloOSC" (Release) or "YoloOSCDebug" (Debug)
+
+For example, if receiving from YoloOSC (Release) in another openFrameworks application using a ofxSyphon client:
+
+```c++
+// ofApp.h
+ofxSyphonClient client;
+
+// ofApp.cpp
+void ofApp::setup() {
+  ...
+  client.setup();
+  client.set("frame", "YoloOSC");
+}
+
+void ofApp::draw() {
+ofSetColor(255);
+client.draw(0, 0);
+}
+```
 
 Develop
 -------

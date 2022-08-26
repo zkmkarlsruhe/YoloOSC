@@ -51,6 +51,19 @@ void ofApp::setup() {
 
 	// resources
 	font.load(OF_TTF_MONO, 10);
+
+	// print settings
+	setVerbose(true);
+	ofLogVerbose(PACKAGE) << "send host: " << sender.getSettings().host;
+	ofLogVerbose(PACKAGE) << "send port: " << sender.getSettings().port;
+	if(Syphon::supported()) {
+		syphon.setName(SYPHON_NAME);
+		ofLogVerbose(PACKAGE) << "syphon name: " << syphon.getName();
+		syphon.start();
+		if(syphon.isPublishing()) {
+			ofLogVerbose(PACKAGE) << "started syphon";
+		}
+	}
 }
 
 //--------------------------------------------------------------
@@ -62,6 +75,7 @@ void ofApp::update() {
 			frame.mirror(mirror.vert, mirror.horz);
 		}
 		yolo.setInput(frame.getPixels());
+		syphon.publishTexture(frame.getTexture());
 	}
 	if(yolo.update()) {
 		auto objects = yolo.getObjects();
@@ -194,4 +208,44 @@ void ofApp::dragEvent(ofDragInfo dragInfo) {
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg) {
 
+}
+
+// UTIL
+
+//--------------------------------------------------------------
+void ofApp::setVerbose(bool verbose) {
+	if(verbose) {
+		ofSetLogLevel(PACKAGE, OF_LOG_VERBOSE);
+		ofLogVerbose(PACKAGE) << "verbose " << (verbose ? "on" : "off");
+	}
+	else {
+		ofLogVerbose(PACKAGE) << "verbose " << (verbose ? "on" : "off");
+		ofSetLogLevel(PACKAGE, OF_LOG_NOTICE);
+	}
+	this->verbose = verbose;
+}
+
+//--------------------------------------------------------------
+bool ofApp::isVerbose() {
+	return verbose;
+}
+
+// SYPHON
+
+//--------------------------------------------------------------
+void ofApp::startSyphon() {
+	bool wasPublishing = syphon.isPublishing();
+	syphon.start();
+	if(!wasPublishing && !options) {
+		ofLogVerbose(PACKAGE) << "started syphon";
+	}
+}
+
+//--------------------------------------------------------------
+void ofApp::stopSyphon() {
+	bool wasPublishing = syphon.isPublishing();
+	syphon.stop();
+	if(wasPublishing && !options) {
+		ofLogVerbose(PACKAGE) << "stopped syphon";
+	}
 }

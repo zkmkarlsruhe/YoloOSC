@@ -26,10 +26,15 @@
 #include "ofxTensorFlow2.h"
 #include "ofxYolo.h"
 #include "ofxOsc.h"
+#include "config.h"
+#include "Syphon.h"
 
 class ofApp : public ofBaseApp {
 
 	public:
+
+	/// \section ofApp
+
 		ofApp() {}
 		void setup();
 		void update();
@@ -46,6 +51,24 @@ class ofApp : public ofBaseApp {
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+
+	/// \section Utils
+
+		/// enable/disable loaf verbosity
+		void setVerbose(bool verbose);
+
+		/// get loaf verbosity level
+		bool isVerbose();
+
+	/// \section Syphon
+
+		/// start the Syphon server
+		void startSyphon();
+
+		/// stop the Syphon server
+		void stopSyphon();
+
+	/// \section Data
 
 		// model
 		ofxYolo yolo;
@@ -71,4 +94,12 @@ class ofApp : public ofBaseApp {
 
 		// resources
 		ofTrueTypeFont font;
+
+		Syphon syphon; //< Syphon server (macOS)
+
+		void *options = nullptr; //< commandline options, only valid in setup()
+
+	private:
+
+		bool verbose = false; //< current verbosity
 };
