@@ -13,7 +13,7 @@ media/*.icns
 # Xcode
 *.xcodeproj
 *.xcconfig
-openFrameworks-Info.plist
+!openFrameworks-Info.plist
 !Project.xcconfig
 
 # Python
