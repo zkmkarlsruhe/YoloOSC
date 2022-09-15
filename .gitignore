@@ -7,6 +7,9 @@ bin/data/model
 bin/data/classes.txt
 bin/data/*.png
 
+# media
+media/*.icns
+
 # Xcode
 *.xcodeproj
 *.xcconfig

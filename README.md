@@ -1,7 +1,7 @@
 YoloOSC
 =======
 
-![screenshot](media/screenshot.png)
+![YoloOSC icon](media/icon/icon-rounded.png)
 
 Yolo live object identification to OSC.
  
@@ -102,6 +102,8 @@ make RunReleaseTF2
 
 Usage
 -----
+
+![screenshot](media/screenshot.png)
 
 The openFrameworks application runs the Yolo v4 object detection model using live camera input. The detected objects are sent out using OSC (Open Sound Control) messages.
 
