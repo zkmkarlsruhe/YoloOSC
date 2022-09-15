@@ -11,6 +11,7 @@ bin/data/*.png
 *.xcodeproj
 *.xcconfig
 openFrameworks-Info.plist
+!Project.xcconfig
 
 # Python
 __pycache__
