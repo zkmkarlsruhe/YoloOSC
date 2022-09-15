@@ -91,6 +91,8 @@ make RunRelease
 ```
 ### Linux
 
+__NOTE:__ Since ofxSyphon is not available for Linux, you will need to remove ofxSyphon from addons.make in order to proceed.
+
 Build and run on the terminal:
 
 ```shell
