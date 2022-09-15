@@ -64,6 +64,8 @@ To make this quick, a script is provided to download and install the model (requ
 
 Project files are not included so you will need to generate the project files for your operating system and development environment using the OF ProjectGenerator which is included with the openFrameworks distribution.
 
+If you are *not* building for macOS (ie. using Linux or Windows), remove the "ofxSyphon" line from the `addons.make` file before generating the project files.
+
 To (re)generate project files for an existing project:
 
 1. Click the "Import" button in the ProjectGenerator
@@ -90,8 +92,6 @@ make ReleaseTF2
 make RunRelease
 ```
 ### Linux
-
-__NOTE:__ Since ofxSyphon is not available for Linux, you will need to remove ofxSyphon from addons.make in order to proceed.
 
 Build and run on the terminal:
 

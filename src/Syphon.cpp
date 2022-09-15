@@ -111,9 +111,9 @@ void Syphon::start() {}
 void Syphon::stop() {}
 bool Syphon::isPublishing() {return false;}
 void Syphon::publish() {}
+void Syphon::publishTexture(const ofTexture & tex) {}
 void Syphon::setName(const std::string &name) {}
 std::string Syphon::getName() {return this->name;}
-
-void Syphon::publishTexture(const ofTexture & tex) {}
+ofxSyphonServer *Syphon::getServer() {return nullptr;}
 
 #endif

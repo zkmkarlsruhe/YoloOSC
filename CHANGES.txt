@@ -1,3 +1,9 @@
+0.3.0: TBD
+
+* fixed Syphon wrapper build issue on Linux & Windows (Paul Bethge)
+
+* added info about removing ofxSyphon from addons.make on Linux & Windows
+
 0.2.0: 2022 Aug 26
 
 * added commandline option parsing and run script
