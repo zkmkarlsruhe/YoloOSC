@@ -46,10 +46,6 @@ Overview:
 3. Generate the project files for this folder using the OF ProjectGenerator
 4. Build for your platform
 
-For example, on macOS:
-
-```shell
-
 ### Download Pre-Trained Model
 
 A provide pre-trained YOLO model can be downloaded as a `model_yolo_v4.zip` file from the public shared link here:
