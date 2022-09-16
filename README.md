@@ -46,6 +46,10 @@ Overview:
 3. Generate the project files for this folder using the OF ProjectGenerator
 4. Build for your platform
 
+For example, on macOS:
+
+```shell
+
 ### Download Pre-Trained Model
 
 A provide pre-trained YOLO model can be downloaded as a `model_yolo_v4.zip` file from the public shared link here:
@@ -69,7 +73,7 @@ If you are *not* building for macOS (ie. using Linux or Windows), remove the "of
 To (re)generate project files for an existing project:
 
 1. Click the "Import" button in the ProjectGenerator
-2. Navigate to the project's parent folder ie. "apps/myApps", select the base folder for the example project ie. "LanguageIdentifier", and click the Open button
+2. Navigate to the project's parent folder ie. "apps/myApps", select the base folder for the example project ie. "YoloOSC", and click the Open button
 3. Click the "Update" button
 
 If everything went Ok, you should now be able to open the generated project and build/run the example.
@@ -78,10 +82,13 @@ If everything went Ok, you should now be able to open the generated project and 
 
 On macOS, a couple of additional manual steps are required to use ofxTensorflow2:
 
-1. Enable C++14 (minimum) or C++17 in openFrameworks (only once, Xcode + Makefile)
-2. Invoke `macos_install_libs.sh` in the Xcode project's Run Script build phases (after every project regeneration, Xcode only)
+1. Enable C++14 (minimum) or C++17 in openFrameworks (only once, Xcode + Makefile). See the detailed steps in the [ofxTensorflow2 readme](https://github.com/zkmkarlsruhe/ofxTensorFlow2#macos).
+2. Close the YoloOSC project in Xcode if it's open, then run `configure_xcode.sh` with the path to the YoloOSC root directory as argument to configure the Xcode project (after every project regeneration, Xcode only):
 
-See the detailed steps in the [ofxTensorflow2 readme](https://github.com/zkmkarlsruhe/ofxTensorFlow2#macos).
+```shell
+scripts/configure_xcode.sh .
+```
+_Note: the `.` is important, it means "this directory."_
 
 For an Xcode build, open the Xcode project, select the "YoloOSC Debug" scheme, and hit "Run".
 
@@ -91,6 +98,9 @@ For a Makefile build, build and run on the terminal:
 make ReleaseTF2
 make RunRelease
 ```
+
+_Note: As of summer 2022, it is recommended to build via Xcode. The Makefile build will succeed but running the app will fail due to missing the Syphon framework. This can be resolved by manually copying Syphon.framework into the .app bundle `/Frameworks` directory and re-signing, but this is not yet automated._
+
 ### Linux
 
 Build and run on the terminal:
@@ -230,19 +240,33 @@ void ofApp::draw() {
 }
 ```
 
+To disable building with Syphon support, remove the "ofxSyphon" line from `addons.make`, (re)grenerate the project files, and build.
+
 Develop
 -------
 
 ### Release steps
 
 1. Update changelog
-2. Update app version in Xcode project and ofApp.h define
+2. Update app version in src/config.h define and openFrameworks-Info.plist
 3. Tag version commit, ala "0.3.0"
 4. Push commit and tags to server:
 ~~~
 git commit push
 git commit push --tags
 ~~~
+
+Known Issues
+------------
+
+### Xcode Legacy Build System error
+
+If the build fails in Xcode 12 or 13 with a "The Legacy Build System will be removed in a future release." error, disable this warning via:
+1. Open File->Project Settings
+2. Check "Do not show a diagnostic issue about build system deprecation"
+3. Click "Done"
+
+_This is likely to be fixed via OF version 0.12._
 
 The Intelligent Museum
 ----------------------

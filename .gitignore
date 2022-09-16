@@ -13,8 +13,6 @@ media/*.icns
 # Xcode
 *.xcodeproj
 *.xcconfig
-!openFrameworks-Info.plist
-!Project.xcconfig
 
 # Python
 __pycache__
