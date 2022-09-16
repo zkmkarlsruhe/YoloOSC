@@ -5,11 +5,9 @@ YoloOSC
 
 Yolo live object identification to OSC.
  
-This code base has been developed by [ZKM | Hertz-Lab](https://zkm.de/en/about-the-zkm/organization/hertz-lab) as part of the project [»The Intelligent Museum«](#the-intelligent-museum). 
+This code base has been developed by [ZKM | Hertz-Lab](https://zkm.de/en/about-the-zkm/organization/hertz-lab) as part of the project [»The Intelligent Museum«](#the-intelligent-museum).
 
-Please raise issues, ask questions, throw in ideas or submit code, as this repository is intended to be an open platform to collaboratively improve language identification.
-
-Copyright (c) 2022 ZKM | Karlsruhe.   
+Copyright (c) 2022 ZKM | Karlsruhe.  
 Copyright (c) 2022 Dan Wilcox.
 
 GNU GPL Version 3.
