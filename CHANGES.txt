@@ -6,6 +6,7 @@
   ofxTensorFlow2 lib script integration (run after generating project files)
 * added app icon & integration for macOS .app
 * added info about removing ofxSyphon from addons.make on Linux & Windows
+* added info about excluding archs for Xcode release build
 
 0.2.0: 2022 Aug 26
 

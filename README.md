@@ -268,6 +268,18 @@ If the build fails in Xcode 12 or 13 with a "The Legacy Build System will be rem
 
 _This is likely to be fixed via OF version 0.12._
 
+### Xcode Release build errors due to missing _TF_ functions
+
+When building for Debug, only the architecture of the system is built. When building for Release, multiple architectures will be targeted (Intel and Arm), however since libtensorflow builds are currently single arch only, the Release build will fail to link due to missing architectures.
+
+The quick fix is to disable building for the non-system architecture, for example on an M1 system (arm64) we disable building for Intel (x86_64) and vice-versa in the Xcode project:
+
+1. Click on the project in the top left of the project tree
+2. Click on the project Target, then the Build Settings tab, make sure "All" is selected
+3. Double-click on Excluded Architectures, and enter the non-system arch, ie. "x86_64" for an M1 "arm64" system, etc.
+
+Now a Release rebuild should hopefully finish.
+
 The Intelligent Museum
 ----------------------
 
