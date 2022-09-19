@@ -128,12 +128,15 @@ Message specification:
 
 * **/begin _num_**: detection frame begin
   - num: int, number of objects detected
-* **/object _index_ _ident_ _x_ _y_ _w_ _h_ _confidence_**: detected object
-  - index: int, object index, 0 to num-1
-  - ident: string, identified object class, ie. "dog", "cat", "car", ...
+* **/object _id_ _identindex_ _identtext_ _x_ _y_ _w_ _h_ _confidence_**: detected object
+  - id: int, object id, 0 to n-1
+  - identindex: int, identified object class index, 0 to n-1\*
+  - identtext: string, identified object class string, ie. "dog", "cat", "car", ...
   - x, y, w, & h: normalized bounding box 0-1 (top left corner)
   - confidence: detection confidence %, 0-1
 * **/end**: detection frame end
+
+\* The max number of classes is taken from the number of lines in `bin/data/classes.txt` where each line contains one identified class string.
 
 #### Commandline Options
 

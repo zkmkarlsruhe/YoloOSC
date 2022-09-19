@@ -2,6 +2,7 @@
 
 * fixed Syphon wrapper build issue on Linux & Windows (Paul Bethge)
 
+* added sending object identified class index
 * added configure_xcode.sh script to automate Xcode project app info, icon, and
   ofxTensorFlow2 lib script integration (run after generating project files)
 * added app icon & integration for macOS .app

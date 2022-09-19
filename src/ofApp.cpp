@@ -97,7 +97,8 @@ void ofApp::update() {
 				auto object = objects[i];
 				message.setAddress("/object");
 				message.addInt32Arg(i);
-				message.addStringArg(object.ident);
+				message.addInt32Arg(object.ident.index);
+				message.addStringArg(object.ident.text);
 				message.addFloatArg(object.bbox.x);
 				message.addFloatArg(object.bbox.y);
 				message.addFloatArg(object.bbox.width);
@@ -137,7 +138,7 @@ void ofApp::draw() {
 		ofDrawRectangle(x, y, object.bbox.width * w, object.bbox.height * h);
 
 		// text box
-		std::string text = object.ident + "\n" + ofToString(object.confidence, 2);
+		std::string text = object.ident.text + "\n" + ofToString(object.confidence, 2);
 		ofRectangle bbox = font.getStringBoundingBox(text, x-2, y-2);
 		bbox.width += 4;
 		bbox.height += 4;
