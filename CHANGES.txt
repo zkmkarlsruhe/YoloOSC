@@ -4,6 +4,8 @@
 
 * added sending object identified class index
 * added horz mirror and vert flip commandline arguments
+* added configure_makefile.sh to automate ofxSyphon dependency removal on
+  non-macOS systems and appending ofxTensorFlow2 addon_targets.mk
 * added configure_xcode.sh script to automate Xcode project app info, icon, and
   ofxTensorFlow2 lib script integration (run after generating project files)
 * added app icon & integration for macOS .app

@@ -1,6 +1,6 @@
 #! /bin/sh
 # configure custom settings in Xcode project files
-# 1. generate projects files with oF ProjectGeneration
+# 1. generate projects files with oF ProjectGenerator
 # 2. run this script
 # 3. open Xcode project and build/run
 # Dan Wilcox <dan.wilcox@zkm.de> 2022

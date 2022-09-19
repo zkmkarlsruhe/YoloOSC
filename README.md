@@ -62,8 +62,6 @@ To make this quick, a script is provided to download and install the model (requ
 
 Project files are not included so you will need to generate the project files for your operating system and development environment using the OF ProjectGenerator which is included with the openFrameworks distribution.
 
-If you are *not* building for macOS (ie. using Linux or Windows), remove the "ofxSyphon" line from the `addons.make` file before generating the project files.
-
 To (re)generate project files for an existing project:
 
 1. Click the "Import" button in the ProjectGenerator
@@ -72,17 +70,20 @@ To (re)generate project files for an existing project:
 
 If everything went Ok, you should now be able to open the generated project and build/run the example.
 
+_Note: Some platforms require additional steps before / after project file generation. See following sections._
+
 ### macOS
 
 On macOS, a couple of additional manual steps are required to use ofxTensorflow2:
 
 1. Enable C++14 (minimum) or C++17 in openFrameworks (only once, Xcode + Makefile). See the detailed steps in the [ofxTensorflow2 readme](https://github.com/zkmkarlsruhe/ofxTensorFlow2#macos).
-2. Close the YoloOSC project in Xcode if it's open, then run `configure_xcode.sh` with the path to the YoloOSC root directory as argument to configure the Xcode project (after every project regeneration, Xcode only):
-
+2. Generate YoloOSC project files with the ProjectGenerator
+3. Close the YoloOSC project in Xcode if it's open, then run `configure_xcode.sh` to configure the Xcode project (after every project regeneration, Xcode only)\*:
 ```shell
 scripts/configure_xcode.sh .
 ```
-_Note: the `.` is important, it means "this directory."_
+
+\*_Note: the `.` is important, it means "this directory."_
 
 For an Xcode build, open the Xcode project, select the "YoloOSC Debug" scheme, and hit "Run".
 
@@ -97,7 +98,17 @@ _Note: As of summer 2022, it is recommended to build via Xcode. The Makefile bui
 
 ### Linux
 
-Build and run on the terminal:
+An additonal step is required *before* generating the project files:
+
+1. Run `configure_makefile.sh` to configure the Xcode project (only needed once)\*:
+```shell
+scripts/configure_makefile.sh .
+```
+2. Generate YoloOSC project files with the ProjectGenerator
+
+\*_Note: the `.` is important, it means "this directory."_
+
+Next, build and run on the terminal:
 
 ```shell
 make Release
