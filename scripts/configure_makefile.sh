@@ -18,9 +18,6 @@ PLATFORM="$(uname -s)"
 cd $(dirname "$0")
 cd ../
 
-# of path from config.make
-OF_PATH=$(cat config.make| grep "OF_ROOT =" | grep -v "#" | awk -F" = " '{ print $2 }')
-
 # remove ofxSyphon dependency on non-macOS systems
 if [ "$PLATFORM" != "Darwin" ] ; then
 	sed -i '' '/ofxSyphon$/d' addons.make
@@ -28,4 +25,10 @@ if [ "$PLATFORM" != "Darwin" ] ; then
 fi
 
 # Makefile: custom make targets
-"$OF_PATH"/addons/ofxTensorFlow2/scripts/configure_makefile.sh .
+if [ -e config.make ] ; then
+	# of path from config.make
+	OF_PATH=$(cat config.make| grep "OF_ROOT =" | grep -v "#" | awk -F" = " '{ print $2 }')
+	"$OF_PATH"/addons/ofxTensorFlow2/scripts/configure_makefile.sh .
+else
+	echo "config.make not found, skipping Makefile, run Project Generator first?"
+fi
