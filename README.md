@@ -132,8 +132,8 @@ Message specification:
   - id: int, object id, 0 to n-1
   - identindex: int, identified object class index, 0 to n-1\*
   - identtext: string, identified object class string, ie. "dog", "cat", "car", ...
-  - x, y, w, & h: normalized bounding box 0-1 (top left corner)
-  - confidence: detection confidence %, 0-1
+  - x, y, w, & h: float, normalized bounding box 0-1 (top left corner)
+  - confidence: float, detection confidence %, 0-1
 * **/end**: detection frame end
 
 \* The max number of classes is taken from the number of lines in `bin/data/classes.txt` where each line contains one identified class string.
