@@ -40,6 +40,8 @@ bool Commandline::parse(int argc, char **argv) {
 	parser.add_option("-d,--dev", app->settings.device, "input device number, default " + ofToString(app->settings.device));
 	parser.add_option("-r,--rate", app->settings.rate, "desired input framerate, default " + ofToString(app->settings.rate));
 	parser.add_option("-s,--size", size, "desired input size, default " + ofToString(app->settings.size.width) + "x" + ofToString(app->settings.size.height));
+	parser.add_flag("-m,--mirror", app->mirror.horz, "mirror horizontally");
+	parser.add_flag("-f,--flip", app->mirror.vert, "flip vertically");
 	parser.add_flag("--syphon", app->settings.syphon, "start streaming with Syphon (macOS only)");
 	parser.add_flag("-v,--verbose", verbose, "verbose printing");
 	parser.add_flag("--version", version, "print version and exit");

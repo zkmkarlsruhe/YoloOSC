@@ -76,7 +76,7 @@ class ofApp : public ofBaseApp {
 		ofVideoGrabber video;
 		ofImage frame; //< cached video frame
 		struct {
-			bool horz = true;
+			bool horz = false;
 			bool vert = false;
 		} mirror; //< input mirroring
 

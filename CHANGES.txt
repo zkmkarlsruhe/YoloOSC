@@ -3,11 +3,14 @@
 * fixed Syphon wrapper build issue on Linux & Windows (Paul Bethge)
 
 * added sending object identified class index
+* added horz mirror and vert flip commandline arguments
 * added configure_xcode.sh script to automate Xcode project app info, icon, and
   ofxTensorFlow2 lib script integration (run after generating project files)
 * added app icon & integration for macOS .app
-* added info about removing ofxSyphon from addons.make on Linux & Windows
-* added info about excluding archs for Xcode release build
+
+* horz mirroing now off by default
+* updated readme about removing ofxSyphon from addons.make on Linux & Windows
+* updated readme about excluding archs for Xcode release build
 
 0.2.0: 2022 Aug 26
 

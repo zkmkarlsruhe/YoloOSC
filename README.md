@@ -155,6 +155,8 @@ Options:
   -d,--dev INT                input device number, default 0
   -r,--rate INT               desired input framerate, default 30
   -s,--size TEXT              desired input size, default 640x480
+  -m,--mirror                 mirror horizontally
+  -f,--flip                   flip vertically
   --syphon                    start streaming with Syphon (macOS only)
   -v,--verbose                verbose printing
   --version                   print version and exit
