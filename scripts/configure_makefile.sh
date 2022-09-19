@@ -20,7 +20,7 @@ cd ../
 
 # remove ofxSyphon dependency on non-macOS systems
 if [ "$PLATFORM" != "Darwin" ] ; then
-	sed -i '' '/ofxSyphon$/d' addons.make
+	sed -i '/ofxSyphon$/d' addons.make
 	echo "addons.make removing ofxSyphon"
 fi
 
