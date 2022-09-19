@@ -26,7 +26,7 @@
 #pragma once
 
 #define PACKAGE	"YoloOSC"
-#define	VERSION	"0.2.0"
+#define	VERSION	"1.0.0"
 #define DESCRIPTION "yolo live object identification to osc"
 
 // defaults
