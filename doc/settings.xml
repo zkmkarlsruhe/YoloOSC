@@ -1,0 +1,13 @@
+<settings>
+	<address>localhost</address>
+	<port>7765</port>
+	<dev>0</dev>
+	<rate>30</rate>
+	<size>
+		<width>640</width>
+		<height>480</height>
+	</size>
+	<mirror>true</mirror>
+	<flip>false</flip>
+	<syphon>true</syphon>
+</settings>

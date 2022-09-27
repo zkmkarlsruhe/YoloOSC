@@ -158,6 +158,9 @@ Additional run time settings are available via commandline options as shown via 
 yolo live object identification to osc
 Usage: YoloOSC [OPTIONS]
 
+Positionals:
+  XML TEXT                    XML settings file
+
 Options:
   -h,--help                   Print this help message and exit
   -a,--address TEXT           OSC send host address or name, default localhost
@@ -171,6 +174,7 @@ Options:
   --syphon                    start streaming with Syphon (macOS only)
   -v,--verbose                verbose printing
   --version                   print version and exit
+
 ~~~
 
 For example, to send OSC to a different address and port, use the `-a` and `-p` options:
@@ -214,6 +218,33 @@ Another option is to use a wrapper script, such as the `yoloosc` script included
 ~~~
 
 _Note: The `yoloosc` script uses the release build "YoloOSC" .app naming. If you are testing with the debug build, edit the `APP` variable name to "YoloOSCDebug"._
+
+#### XML Settings
+
+In addition to the commandline options, YoloOSC can also load settings from an XML file.
+
+By default, a file named "settings.xml" located in `bin/data` will be loaded at startup. Also, a file path can be given to YoloOSC as the first non-option argument, ex:
+
+~~~
+bin/YoloOSC path/to/mysettings.xml
+~~~
+
+_Note: Settings are loaded from the XML file *first*, then any commandline options are applied *second* as overrides._
+
+A template XML file is found in `doc/settings.xml`. The format follows the commandline options naming:
+
+* settings: root tag
+* child tags:
+  - address: string, osc send address
+  - port: int, osc send port
+  - dev: int, input device number
+  - rate: int, desired input framerate
+  - size:
+    + width: int, desired input size width
+    + height: int, desired input size height
+  - mirror: bool (0 or 1), mirror horizontally
+  - flip: bool (0 or 1), flip vertically
+  - syphon: bool (0 or 1), start streaming with Syphon (macOS only)
 
 #### Syphon (macOS)
 

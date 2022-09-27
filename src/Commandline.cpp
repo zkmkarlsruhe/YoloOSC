@@ -33,6 +33,9 @@ bool Commandline::parse(int argc, char **argv) {
 	bool list = false;
 	bool verbose = false;
 	bool version = false;
+	std::string settings = "";
+
+	parser.add_option("XML", settings, "XML settings file");
 
 	parser.add_option("-a,--address", app->settings.host, "OSC send host address or name, default " + app->settings.host);
 	parser.add_option("-p,--port", app->settings.port, "OSC send port, default " + ofToString(app->settings.port));
@@ -67,6 +70,21 @@ bool Commandline::parse(int argc, char **argv) {
 	if(list) {
 		app->video.listDevices();
 		return false;
+	}
+
+	// try loading settings file, commandline options then override settings
+	if(settings != "") {
+		if(!app->loadFile(settings)) {
+			return false; // exit on error with user-supplied path
+		}
+		ofLogNotice(PACKAGE) << "loaded " << settings;
+	}
+	else {
+		if(ofFile::doesFileExist(SETTINGS)) {
+			if(app->loadFile(SETTINGS)) {
+				ofLogNotice(PACKAGE) << "loaded " << SETTINGS;
+			}
+		}
 	}
 
 	// size: WxH, ie 640x480 or 1280X720

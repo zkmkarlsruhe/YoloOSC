@@ -9,6 +9,7 @@
 * added configure_xcode.sh script to automate Xcode project app info, icon, and
   ofxTensorFlow2 lib script integration (run after generating project files)
 * added app icon & integration for macOS .app
+* added XML settings file loading
 
 * horz mirroing now off by default
 * updated readme about removing ofxSyphon from addons.make on Linux & Windows

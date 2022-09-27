@@ -33,6 +33,9 @@
 #define SEND_HOST "localhost"
 #define SEND_PORT 7765
 
+// settings file
+#define SETTINGS "settings.xml"
+
 // use Syphon on macOS, comment this if not needed
 #if defined(__APPLE_CC__) && !defined(YOLOOSC_USE_SYPHON)
 	#define YOLOOSC_USE_SYPHON

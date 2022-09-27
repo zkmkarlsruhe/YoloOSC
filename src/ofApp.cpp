@@ -215,3 +215,58 @@ void ofApp::dragEvent(ofDragInfo dragInfo) {
 void ofApp::gotMessage(ofMessage msg) {
 
 }
+
+//--------------------------------------------------------------
+bool ofApp::loadFile(const std::string &path) {
+	ofXml xml;
+	if(!xml.load(path)) {
+		return false;
+	}
+	auto root = xml.getChild("settings");
+	if(!root) {
+		ofLogWarning(PACKAGE) << SETTINGS << " missing \"settings\" root tag";
+		return false;
+	}
+
+	auto child = root.findFirst("address");
+	if(child) {settings.host = child.getValue();}
+
+	child = root.findFirst("port");
+	if(child) {settings.port = child.getIntValue();}
+
+	child = root.findFirst("dev");
+	if(child) {settings.device = child.getIntValue();}
+
+	child = root.getChild("rate");
+	if(child) {settings.rate = child.getIntValue();}
+
+	child = root.getChild("size/width");
+	if(child) {
+		int w = child.getIntValue();
+		if(w <= 0) {
+			ofLogWarning(PACKAGE) << "ignoring invalid width: " << child.getValue();
+		}
+		else {
+			settings.size.width = w;
+		}
+	}
+
+	child = root.getChild("size/height");
+	if(child) {
+		int h = child.getIntValue();
+		if(h <= 0) {
+			ofLogWarning(PACKAGE) << "ignoring invalid height: " << child.getValue();
+		}
+		else {
+			settings.size.height = h;
+		}
+	}
+
+	child = root.getChild("mirror");
+	if(child) {mirror.horz = (bool)child.getIntValue();}
+
+	child = root.getChild("flip");
+	if(child) {mirror.vert = (bool)child.getIntValue();}
+
+	return true;
+}

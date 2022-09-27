@@ -64,6 +64,9 @@ class ofApp : public ofBaseApp {
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
+		/// load settings from a file, returns false on error
+		bool loadFile(const std::string &path);
+
 	/// \section Data
 
 		// config settings
