@@ -14,3 +14,17 @@ include $(OF_ROOT)/libs/openFrameworksCompiled/project/makefileCommon/compile.pr
 
 # ofxTensorFlow2
 include $(OF_ROOT)/addons/ofxTensorFlow2/addon_targets.mk
+
+# ofxSyphon
+include syphon_targets.mk
+
+# additional build targets for macOS
+ifeq ($(PLATFORM_LIB_SUBPATH),osx)
+
+# build Debug app and install both libtensorflow libs and the Syphon framework
+DebugYolo: DebugTF2 DebugSyphon
+
+# build Release app and install both libtensorflow libs and the Syphon framework
+ReleaseYolo: ReleaseTF2 ReleaseSyphon
+
+endif

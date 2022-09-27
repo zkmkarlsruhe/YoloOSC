@@ -8,6 +8,9 @@
   non-macOS systems and appending ofxTensorFlow2 addon_targets.mk
 * added configure_xcode.sh script to automate Xcode project app info, icon, and
   ofxTensorFlow2 lib script integration (run after generating project files)
+* added macos_install_syphon.sh script, syphon_targets.mk, and macOS-only
+  ReleaseYolo and DebugYolo makefile targets to automate installing the Syphon
+  framework for macOS builds
 * added app icon & integration for macOS .app
 * added XML settings file loading
 

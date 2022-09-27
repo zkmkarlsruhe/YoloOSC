@@ -90,15 +90,13 @@ For an Xcode build, open the Xcode project, select the "YoloOSC Debug" scheme, a
 For a Makefile build, build and run on the terminal:
 
 ```shell
-make ReleaseTF2
+make ReleaseYolo
 make RunRelease
 ```
 
-_Note: As of summer 2022, it is recommended to build via Xcode. The Makefile build will succeed but running the app will fail due to missing the Syphon framework. This can be resolved by manually copying Syphon.framework into the .app bundle `/Frameworks` directory and re-signing, but this is not yet automated._
-
 ### Linux
 
-An additonal step is required *before* generating the project files:
+An additional step is required *before* generating the project files:
 
 1. Run `configure_makefile.sh` to configure the Xcode project (only needed once)\*:
 ```shell
@@ -281,7 +279,14 @@ void ofApp::draw() {
 }
 ```
 
-To disable building with Syphon support, remove the "ofxSyphon" line from `addons.make`, (re)grenerate the project files, and build.
+To disable building with Syphon support, remove the "ofxSyphon" line from `addons.make`, (re)generate the project files, and build.
+
+For a makefile build, use the `ReleaseTF2` or `DebugTF2` targets instead of the `ReleaseYolo` or `DebugYolo` targets to install the libtensorflow2 libs *without* installing the Syphon framework:
+
+```shell
+make ReleaseTF2
+make RunRelease
+```
 
 Develop
 -------
