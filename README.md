@@ -209,13 +209,13 @@ Reload the shell and application can now be invoked via:
 yoloosc -v --device 1
 ~~~
 
-Another option is to use a wrapper script, such as the `yoloosc` script included with this repo:
+Another option is to use a wrapper script, such as the `yoloosc.sh` script included with this repo:
 
 ~~~
-./yoloosc -v --device 1
+./yoloosc.sh -v --device 1
 ~~~
 
-_Note: The `yoloosc` script uses the release build "YoloOSC" .app naming. If you are testing with the debug build, edit the `APP` variable name to "YoloOSCDebug"._
+_Note: The `yoloosc.sh` script uses the release build "YoloOSC" .app naming. If you are testing with the debug build, edit the `APP` variable name to "YoloOSCDebug"._
 
 #### XML Settings
 
@@ -253,7 +253,7 @@ On macOS, the camera input frames can be received by client applications which u
 Syphon streaming is off by default, use the commandline `--syphon` flag to enable (see Commandline Options macOS section):
 
 ~~~
-open bin/YoloOSC.app --device 1
+open bin/YoloOSC.app --args --syphon
 ~~~
 
 When streaming, YoloOSC publishes the camera frame using the following naming format:
