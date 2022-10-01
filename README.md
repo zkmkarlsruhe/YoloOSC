@@ -101,7 +101,7 @@ make RunRelease
 
 An additional step is required *before* generating the project files:
 
-1. Run `configure_makefile.sh` to configure the Xcode project (only needed once)\*:
+1. Run `configure_makefile.sh` to configure the project (only needed once)\*:
 ```shell
 scripts/configure_makefile.sh .
 ```
