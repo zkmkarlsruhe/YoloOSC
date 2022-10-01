@@ -16,6 +16,9 @@ ofxYolo.h from [ofxTensorFlow2](https://github.com/zkmkarlsruhe/ofxTensorFlow2) 
 BSD Simplified License: https://github.com/zkmkarlsruhe/ofxTensorFlow2  
 [Jonathhhan](https://github.com/Jonathhhan) & members of the ZKM | Hertz-Lab 2022
 
+Yolo v4 model by https://github.com/AlexeyAB/darknet  
+TFlite version from https://github.com/hunglc007/tensorflow-yolov4-tflite
+
 Dependencies
 ------------
 
@@ -46,7 +49,7 @@ Overview:
 
 ### Download Pre-Trained Model
 
-A provide pre-trained YOLO model can be downloaded as a `model_yolo_v4.zip` file from the public shared link here:
+A pre-trained Yolo model can be downloaded as a `model_yolo_v4.zip` file from the public shared link here:
 
 <https://cloud.zkm.de/index.php/s/gfWEjyEr9X4gyY6>
 
@@ -123,7 +126,7 @@ The openFrameworks application runs the Yolo v4 object detection model using liv
 ### Key Commands
 
 * `m`: toggle horz mirroring
-* `n`: toggle vert mirroing
+* `n`: toggle vert mirroring
 
 ### OSC Communication
 
@@ -300,6 +303,22 @@ Develop
 ~~~
 git commit push
 git commit push --tags
+~~~
+
+### macOS Release Build Zip
+
+1. Set Signing & Capabilities Team
+2. Build archive:
+~~~
+make app
+~~~
+3. Verify code signature:
+~~~
+make verify
+~~~
+3. Create version zip:
+~~~
+make zip
 ~~~
 
 Known Issues
