@@ -15,6 +15,7 @@
 * added XML settings file loading
 
 * horz mirroing now off by default
+* show alert for setup() errors
 * updated readme about removing ofxSyphon from addons.make on Linux & Windows
 * updated readme about excluding archs for Xcode release build
 

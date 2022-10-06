@@ -32,6 +32,8 @@ void ofApp::setup() {
 
 	// model
 	if(!yolo.setup("model", "classes.txt")) {
+		ofSystemAlertDialog("YoloOSC error\n"
+		                    "Model or classes.txt not found.");
 		std::exit(EXIT_FAILURE);
 	}
 	yolo.setNormalize(true);
@@ -41,6 +43,9 @@ void ofApp::setup() {
 	video.setDeviceID(settings.device);
 	video.setDesiredFrameRate(settings.rate);
 	if(!video.setup(settings.size.width, settings.size.height)) {
+		ofSystemAlertDialog("YoloOSC error\n"
+		                    "Could not connect to camera or apply settings. "
+		                    "Is the device available?");
 		std::exit(EXIT_FAILURE);
 	}
 	frame.allocate(video.getWidth(), video.getHeight(), OF_IMAGE_COLOR);
@@ -50,6 +55,9 @@ void ofApp::setup() {
 
 	// osc
 	if(!sender.setup(settings.host, settings.port)) {
+		ofSystemAlertDialog("YoloOSC error\n"
+		                    "Could not create OSC sender to " + settings.host +
+		                    " port " + ofToString(settings.port));
 		std::exit(EXIT_FAILURE);
 	}
 
