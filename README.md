@@ -305,21 +305,13 @@ git commit push
 git commit push --tags
 ~~~
 
-### macOS Release Build Zip
+### macOS build distribution
 
-1. Set Signing & Capabilities Team
-2. Build archive:
-~~~
-make app
-~~~
-3. Verify code signature:
-~~~
-make verify
-~~~
-3. Create version zip:
-~~~
-make zip
-~~~
+1. Enable Hardened Runtime
+2. Notarize app
+3. Bundle app and data into YoloOSC-version distribution folder
+4. Compress distribution folder into YoloOSC-version.dmg disk image
+5. Sign disk image
 
 Known Issues
 ------------
