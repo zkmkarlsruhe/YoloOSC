@@ -27,4 +27,4 @@ DEST="$APP_PATH/Contents/Frameworks"
 echo "install framework to $APP_PATH $APP_NAME"
 
 # copy dylibs to app bundle
-rsync -aed "$SRC"/*.framework "$DEST"
+rsync -aedl "$SRC"/Syphon.framework "$DEST"

@@ -18,8 +18,7 @@ PLISTBUDDY=/usr/libexec/PlistBuddy
 ##### main
 
 # change to project root dir
-cd $(dirname "$0")
-cd ../
+cd $(dirname "$0")/../
 
 # of path from config.make
 OF_PATH=$(cat config.make| grep "OF_ROOT =" | grep -v "#" | awk -F" = " '{ print $2 }')
