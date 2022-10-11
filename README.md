@@ -307,11 +307,12 @@ git commit push --tags
 
 ### macOS build distribution
 
-1. Enable Hardened Runtime
-2. Notarize app
-3. Bundle app and data into YoloOSC-version distribution folder
-4. Compress distribution folder into YoloOSC-version.dmg disk image
-5. Sign disk image
+1. Set Signing & Capabilities Team
+2. Enable Hardened Runtime
+3. Notarize app
+4. Bundle app and data into YoloOSC-version distribution folder
+5. Compress distribution folder into YoloOSC-version.dmg disk image
+6. Sign disk image
 
 Known Issues
 ------------
