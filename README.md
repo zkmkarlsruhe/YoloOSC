@@ -139,13 +139,13 @@ By default, sends to:
 Message specification:
 
 * **/begin _num_**: detection frame begin
-  - num: int, number of objects detected
+  - _num_: int, number of objects detected
 * **/object _id_ _identindex_ _identtext_ _x_ _y_ _w_ _h_ _confidence_**: detected object
-  - id: int, object id, 0 to n-1
-  - identindex: int, identified object class index, 0 to n-1\*
-  - identtext: string, identified object class string, ie. "dog", "cat", "car", ...
-  - x, y, w, & h: float, normalized bounding box 0-1 (top left corner)
-  - confidence: float, detection confidence %, 0-1
+  - _id_: int, object id, 0 to n-1
+  - _identindex_: int, identified object class index, 0 to n-1\*
+  - _identtext_: string, identified object class string, ie. "dog", "cat", "car", ...
+  - _x, y, w, & h_: float, normalized bounding box 0-1 (top left corner)
+  - _confidence_: float, detection confidence %, 0-1
 * **/end**: detection frame end
 
 \* The max number of classes is taken from the number of lines in `bin/data/classes.txt` where each line contains one identified class string.
@@ -192,10 +192,10 @@ For macOS, the application binary can be invoked from within the .app bundle to 
 bin/YoloOSC.app/Contents/MacOS/YoloOSC -h
 ~~~
 
-or via the system `open` command:
+or via the system `open` command using the `--args` flag:
 
 ~~~
-open bin/YoloOSC.app --device 1
+open bin/YoloOSC.app --args --device 1
 ~~~
 
 _Note: `open` will launch the app without a Terminal window, so console output cannot be read._
@@ -206,7 +206,7 @@ This approach can also be wrapped up into a shell alias to be added to the accou
 alias yoloosc="/Applications/YoloOSC.app/Contents/MacOS/YoloOSC"
 ~~~
 
-Reload the shell and application can now be invoked via:
+Close and reopen the shell. The application can now be invoked via:
 
 ~~~
 yoloosc -v --device 1
