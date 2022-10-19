@@ -159,7 +159,7 @@ Additional run time settings are available via commandline options as shown via 
 yolo live object identification to osc
 Usage: YoloOSC [OPTIONS]
 
-Positionals:
+Arguments:
   XML TEXT                    XML settings file
 
 Options:

@@ -24,6 +24,7 @@
 
 Commandline::Commandline(ofApp *app) : app(app) {
 	parser.description(DESCRIPTION);
+	parser.get_formatter()->label("Positionals", "Arguments");
 }
 
 bool Commandline::parse(int argc, char **argv) {
