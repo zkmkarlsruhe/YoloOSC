@@ -14,7 +14,7 @@ GNU GPL Version 3.
 
 ofxYolo.h from [ofxTensorFlow2](https://github.com/zkmkarlsruhe/ofxTensorFlow2) example_style_transfer_arbitrary under a
 BSD Simplified License: https://github.com/zkmkarlsruhe/ofxTensorFlow2  
-[Jonathhhan](https://github.com/Jonathhhan) & members of the ZKM | Hertz-Lab 2022
+[Jonathan Frank](https://github.com/Jonathhhan) & members of the ZKM | Hertz-Lab 2022
 
 Yolo v4 model by https://github.com/AlexeyAB/darknet  
 TFlite version from https://github.com/hunglc007/tensorflow-yolov4-tflite
