@@ -52,8 +52,8 @@ else # version string is not in oF project template
 fi
 $PLISTBUDDY -c "set :CFBundleVersion $BUILD" $PLIST
 $PLISTBUDDY -c 'set :CFBundleIdentifier de.zkm.${EXECUTABLE_NAME}' $PLIST
-$PLISTBUDDY -c 'set :NSCameraUsageDescription "YoloOSC would like to access the camera to identify objects."' $PLIST
-$PLISTBUDDY -c 'set :NSMicrophoneUsageDescription "YoloOSC would like to access the microphone."' $PLIST
+$PLISTBUDDY -c 'set :NSCameraUsageDescription "${EXECUTABLE_NAME} would like to access the camera to identify objects."' $PLIST
+$PLISTBUDDY -c 'set :NSMicrophoneUsageDescription "${EXECUTABLE_NAME} would like to access the microphone."' $PLIST
 
 # xcodeproj: libtensorflow dylib installation
 "$OF_PATH"/addons/ofxTensorFlow2/scripts/configure_xcode.sh .

@@ -27,7 +27,7 @@ fi
 # Makefile: custom make targets
 if [ -e config.make ] ; then
 	# of path from config.make
-	OF_PATH=$(cat config.make| grep "OF_ROOT =" | grep -v "#" | awk -F" = " '{ print $2 }')
+	OF_PATH=$(cat config.make | grep "OF_ROOT =" | grep -v "#" | awk -F" = " '{ print $2 }')
 	"$OF_PATH"/addons/ofxTensorFlow2/scripts/configure_makefile.sh .
 else
 	echo "config.make not found, skipping Makefile, run Project Generator first?"
