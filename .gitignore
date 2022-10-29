@@ -2,6 +2,10 @@
 
 config.make
 
+# Makefile-mac-dist.mk
+build
+*.dmg
+
 # model
 bin/data/model
 bin/data/classes.txt

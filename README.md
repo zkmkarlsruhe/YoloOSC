@@ -300,10 +300,10 @@ Develop
 2. Update app version in src/config.h define and openFrameworks-Info.plist
 3. Tag version commit, ala "0.3.0"
 4. Push commit and tags to server:
-~~~
+```shell
 git commit push
 git commit push --tags
-~~~
+```
 
 ### macOS build distribution
 
@@ -313,6 +313,12 @@ git commit push --tags
 4. Bundle app and data into YoloOSC-version distribution folder
 5. Compress distribution folder into YoloOSC-version.dmg disk image
 6. Sign disk image
+
+Once steps 1-2 are done, the remaining steps are automated via `Makefile-mac-dist.mk` using the `scripts/release_dmg.sh` wrapper script:
+```shell
+./scripts/release_dmg.sh
+```
+
 
 Known Issues
 ------------
