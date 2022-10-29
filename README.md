@@ -319,7 +319,6 @@ Once steps 1-2 are done, the remaining steps are automated via `Makefile-mac-dis
 ./scripts/release_dmg.sh
 ```
 
-
 Known Issues
 ------------
 
