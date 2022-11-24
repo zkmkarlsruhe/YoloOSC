@@ -73,6 +73,6 @@ class Syphon {
 
 	protected:
 
-		ofxSyphonServer *server = nullptr; //< Syphon server
-		std::string name = "screen";       //< cached server name
+		ofxSyphonServer *server = nullptr; ///< Syphon server
+		std::string name = "screen";       ///< cached server name
 };

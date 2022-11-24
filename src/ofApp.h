@@ -77,11 +77,11 @@ class ofApp : public ofBaseApp {
 
 		// input source
 		ofVideoGrabber video;
-		ofImage frame; //< cached video frame
+		ofImage frame; ///< cached video frame
 		struct {
 			bool horz = false;
 			bool vert = false;
-		} mirror; //< input mirroring
+		} mirror; ///< input mirroring
 
 		// osc
 		ofxOscSender sender;

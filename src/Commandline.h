@@ -40,7 +40,7 @@ class Commandline {
 		/// print parser error and return exit code
 		int exit();
 
-		ofApp *app = nullptr;              //< required app instance
-		CLI::App parser;                   //< parser instance
-		CLI::Error error = CLI::Success(); //< parse error if program should exit
+		ofApp *app = nullptr;              ///< required app instance
+		CLI::App parser;                   ///< parser instance
+		CLI::Error error = CLI::Success(); ///< parse error if program should exit
 };
