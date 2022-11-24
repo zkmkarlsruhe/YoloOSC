@@ -2,7 +2,6 @@
 # Dan Wilcox <danomatika@gmail.com> 2022
 #
 
-NAME=loaf
 SRC=icon-rounded.png
 SRC-DEBUG=icon-debug-rounded.png
 

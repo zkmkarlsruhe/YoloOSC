@@ -12,7 +12,7 @@ bin/data/classes.txt
 bin/data/*.png
 
 # media
-media/*.icns
+media/icon/*.icns
 
 # Xcode
 *.xcodeproj
